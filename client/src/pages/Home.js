@@ -1,5 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 
-export default function Home() {
-  return <div>Hello from Home</div>;
-}
+// components
+import Modal from "../components/Modal";
+import Contacts from "../components/Contacts";
+
+// context
+import { modalContext } from "../context/modalContext/modalContext";
+
+import ContactsFilter from "../components/ContactsFilter";
+
+const Home = () => {
+  const { modal } = useContext(modalContext);
+  return (
+    <div>
+      <ContactsFilter />
+      <Contacts />
+      <Modal open={modal} />
+    </div>
+  );
+};
+
+export default Home;
