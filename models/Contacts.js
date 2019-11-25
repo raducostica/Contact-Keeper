@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const ContactSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    // collection which we are reffering to
     ref: "users"
   },
   name: {
@@ -23,7 +22,7 @@ const ContactSchema = mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now()
   }
 });
 

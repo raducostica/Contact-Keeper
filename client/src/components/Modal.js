@@ -13,6 +13,7 @@ const Modal = ({ open }) => {
     if (current !== null) {
       setContact(current);
       openModal();
+      console.log("hello");
     } else {
       setContact({
         name: "",
@@ -21,7 +22,7 @@ const Modal = ({ open }) => {
         type: "personal"
       });
     }
-  }, [contactContext, current]);
+  }, [contactContext, current, openModal]);
 
   const [contact, setContact] = useState({
     name: "",

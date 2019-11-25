@@ -6,7 +6,7 @@ export const modalContext = createContext();
 
 const ModalProvider = ({ children }) => {
   const contactContext = useContext(ContactsContext);
-  const { clearCurrent, current } = contactContext;
+  const { clearCurrent } = contactContext;
   const [modal, setModal] = useState(false);
 
   const openModal = () => {

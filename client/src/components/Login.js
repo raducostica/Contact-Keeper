@@ -1,6 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../context/userContext/UserContext";
 
-const Login = () => {
+const Login = props => {
+  const authContext = useContext(AuthContext);
+
+  const { login, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
+  }, [isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -14,26 +25,45 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("Login submit");
+    if (email === "" || password === "") {
+      console.log("nope");
+    } else {
+      login({
+        email,
+        password
+      });
+    }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="hero-container">
+      <div className="register-form-container">
+        <div className="form-background">
+          <div className="form-title">
+            <p>Login</p>
+          </div>
+          <form onSubmit={handleSubmit} className="form login-form">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+            <button type="submit" className="btn-register">
+              Login
+            </button>
+            {/* </div> */}
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

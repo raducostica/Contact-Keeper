@@ -13,12 +13,12 @@ const connectDB = async () => {
       useFindAndModify: false,
       useUnifiedTopology: true
     });
-
-    console.log("mongodb connected");
-  } catch (err) {
-    console.log(err.message);
+  } catch (error) {
+    console.error(error.message);
     process.exit(1);
   }
+
+  console.log("MongoDB Connected...");
 };
 
 module.exports = connectDB;

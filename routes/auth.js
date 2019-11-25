@@ -1,35 +1,32 @@
 const express = require("express");
+const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+
+const User = require("../models/Users");
+
 const auth = require("../middleware/auth");
 
-const User = require("../models/User");
-
-const router = express.Router();
-
-// @ route  GET api/auth
-// @ desc   Get logged in user
-// @access  Private
+// auth is middleware that verifies token
+// if it is verified then user is the user - password
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
+
     res.json(user);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send("server error");
   }
 });
 
-// @ route  POST api/auth
-// @ desc   Auth user and get token
-// @access  Public
 router.post(
   "/",
   [
-    check("email", "please include a valid email"),
-    check("password", "password is required").exists()
+    check("email", "Please include a valid email").isEmail(),
+    check("password", "Password is required").exists()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -41,18 +38,20 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      let user = await User.findOne({
-        email
-      });
+      // find a user with the email entered
 
+      let user = await User.findOne({ email });
+
+      // if there is not a user with email entered
       if (!user) {
-        return res.status(400).json({ msg: "Invalid credentials" });
+        return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
+      // compare password sent in by user with password saved in db
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid credentials" });
+        return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
       const payload = {
@@ -75,8 +74,8 @@ router.post(
           res.json({ token });
         }
       );
-    } catch (err) {
-      console.error(err.message);
+    } catch (error) {
+      console.error(error.message);
       res.status(500).send("Server error");
     }
   }

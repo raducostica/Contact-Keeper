@@ -17,6 +17,7 @@ li {
 body {
   max-height: 100vh;
   background: #d8d8d8;
+  font-family: Arial, Helvetica, sans-serif;
 }
 /* navbar */
 .navbar {
@@ -233,20 +234,20 @@ body {
 .form-background {
   background: #f5f5f5;
   width: 30%;
-  height: 63;
+  height: 65%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .form {
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  color: #d8d8d8;
+  color: #000;
+  width: 100%;
+  justify-content: center;
 }
 
-.form h3 {
-  text-align: center;
+.form-title {
   background: rgba(6, 7, 52, 1);
   background: -webkit-linear-gradient(
     top,
@@ -259,10 +260,28 @@ body {
     rgba(6, 7, 52, 1),
     rgba(13, 46, 62, 1)
   );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d8d8d8;
+  height: 3.5rem;
+}
+
+.form-title p {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.form label {
+  margin: 0 3rem;
+}
+
+.label {
+  margin-top: 0.5rem;
 }
 
 .form input {
-  margin-bottom: 0.5rem;
+  margin: 0rem 3rem 0.5rem 3rem;
   padding: 5px;
 }
 
@@ -271,3 +290,66 @@ body {
   padding: 5px;
   margin: 1rem auto 0 auto;
 }
+
+.reg-form-title {
+  margin-bottom: 1rem;
+}
+
+.btn-register {
+  border: none;
+  background: rgba(6, 7, 52, 1);
+  color: #d8d8d8;
+  cursor: pointer;
+}
+
+.hero-container {
+  height: 91.5vh;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.5) 77%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url("./phones.jpg") center/cover no-repeat;
+}
+
+.center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-text p {
+  font-size: 4rem;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text p span {
+  font-size: 1.5rem;
+}
+
+.hero-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-btn a {
+  background: crimson;
+  margin-top: 1rem;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+/* .login-form {
+  margin-bottom: 3rem;
+} */
