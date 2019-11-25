@@ -15,10 +15,6 @@ const app = express();
 // allows you to accept body data e.g req.body
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.json("hello world");
-});
-
 // DEFINE OUR ROUTES
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
