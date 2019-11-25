@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const { check, validationResult } = require("express-validator/check");
 const auth = require("../middleware/auth");
 
@@ -8,9 +7,7 @@ const User = require("../models/Users");
 const Contact = require("../models/Contacts");
 
 // Pass in auth to all private routes
-
 // contacts are private to each user
-
 // GET CONTACTS
 router.get("/", auth, async (req, res) => {
   try {
