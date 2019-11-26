@@ -49,7 +49,7 @@ const Navbar = () => {
           <h1 className="icon">
             <FaIdCard />
           </h1>
-          <h3>Contact</h3>
+          <h3>Contacts Keeper</h3>
           {isAuthenticated ? (
             <button className="add-contact-btn" onClick={openModal}>
               <IoIosAddCircleOutline />
