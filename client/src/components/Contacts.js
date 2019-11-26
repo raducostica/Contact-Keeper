@@ -17,7 +17,11 @@ const Contacts = () => {
   }, []);
 
   if (contacts !== null && contacts.length === 0 && !loading) {
-    return <h4>Please Add a Contact</h4>;
+    return (
+      <div className="loading">
+        <h4>Please Add a Contact</h4>
+      </div>
+    );
   }
 
   return (
