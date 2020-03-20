@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post("/api/users", formData, config);
 
+      console.log(res);
       // res.data = token
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
 
